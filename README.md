@@ -1,2 +1,2 @@
 # password_manager
-Python side project
+The goal is to develop a password manager in Python
