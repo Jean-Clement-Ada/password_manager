@@ -1,22 +1,25 @@
 import bcrypt
 
 with open('mesMotsDePasse', 'r') as mdp:
-  print(mdp.read())
+  
+  #read and encode the document in bytes to use bcrypt
+  mdpExtract = mdp.read().encode()
+  print(mdpExtract)
 
-  pinceDeSel = bcrypt.gensalt()
-  algohChiffre = bcrypt.hashpw(mdp, pinceDeSel)
+  mdpVerif = input("le mot de passe à vérifier : ").encode()
+  print(mdpVerif)
 
-mdpVerif = input("le mot de passe à vérifier : ").encode()
+  #compare the new password with the hash in the document 'mesMotsDePasse'
+  result = bcrypt.checkpw(mdpVerif, mdpExtract)
 
-result = bcrypt.checkpw(mdpVerif, algoChiffre)
+  print(result)
 
-print(result)
 
-# def verifPassword(mesMotsDePasse):
-#   #fichierTopSecret = open("mesMotsDePasse", "r")
-#   for i in fichierTopSecret:
-#     bcrypt.checkpw(mdp, algoChiffre)
+# todo :  - organiser le fichier texte pour séparer les entrées
+#         - pouvoir comparer plusieurs entrées pour vérifier si un mot de passe stocké correspond (boucle for)
+#         - chiffrer le fichier texte lui-même pour retrouver les mots de passe en clair à l’intérieur
+#         - interface graphique
+#
+#   for i in mdp:
+#     bcrypt.checkpw(mdpVerif, mdpExtract)
 #     print(i)
-
-# print(verifPassword(fichierTopSecret))
-# print(fichierTopSecret.read())
