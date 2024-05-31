@@ -15,6 +15,7 @@
 import bcrypt
 
 mdp = input("qu’est-ce que c’est ton mot de passe ? : ").encode()
+print(mdp)
 
 pinceDeSel = bcrypt.gensalt()
 algoChiffre = bcrypt.hashpw(mdp, pinceDeSel)
