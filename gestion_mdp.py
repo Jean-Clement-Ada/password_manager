@@ -22,5 +22,13 @@ algoChiffre = bcrypt.hashpw(mdp, pinceDeSel)
 print(algoChiffre)
 
 fichierTopSecret = open("mesMotsDePasse", "a")
-fichierTopSecret.write(algoChiffre.decode() + "\n")
+fichierTopSecret.write(algoChiffre.decode()+ "\n")
 fichierTopSecret.close()
+
+
+mdpVerif = input("Le mot de passe à vérifier : ").encode()
+print(mdpVerif)
+
+result = bcrypt.checkpw(mdpVerif, algoChiffre)
+
+print(result)
